@@ -1,0 +1,9 @@
+﻿global using Main.CQRS;
+global using OrderingApplication.Data;
+global using OrderingApplication.Dtos;
+global using OrderingApplication.Exceptions;
+global using OrderingDomain.Models;
+global using OrderingDomain.ValueObjects;
+global using MediatR;
+global using Microsoft.Extensions.Logging;
+global using OrderingDomain.Events;

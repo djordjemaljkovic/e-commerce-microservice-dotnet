@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using OrderingApplication.Data;
+using OrderingDomain.Models;
+using System.Reflection;
+
+namespace OrderingInfrastructure.Data
+{
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opts) : base(opts) { }
+
+        public DbSet<Customer> Customers => Set<Customer>();
+        public DbSet<Product> Products => Set<Product>();
+        public DbSet<Order> Orders => Set<Order>();
+        public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}
